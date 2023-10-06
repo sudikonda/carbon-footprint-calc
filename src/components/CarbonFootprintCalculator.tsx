@@ -1,8 +1,9 @@
 import {useState} from 'react';
+import {Button, TextField} from '@mui/material';
 
 export const CarbonFootprintCalculator = () => {
-    const [distance, setDistance] = useState<number>(0);
-    const [mpg, setMpg] = useState<number>(0);
+    const [distance, setDistance] = useState<number>();
+    const [mpg, setMpg] = useState<number>();
     const [carbonFootprint, setCarbonFootprint] = useState(0);
 
     const calculateCarbonFootprint = () => {
@@ -15,22 +16,20 @@ export const CarbonFootprintCalculator = () => {
         <div>
 
             <div>
-                <label>Distance (miles):</label>
-                <input
-                    type="number"
-                    value={distance}
-                    onChange={(e) => setDistance(e.target.value)}
+                <TextField id="distance-miles" label="Distance (miles)" variant="outlined"
+                           type="number"
+                           value={distance}
+                           onChange={(e) => setDistance(parseInt(e.target.value))}
                 />
             </div>
             <div>
-                <label>Vehicle MPG:</label>
-                <input
-                    type="number"
-                    value={mpg}
-                    onChange={(e) => setMpg(e.target.value)}
+                <TextField id="distance-miles" label="Vehicle MPG" variant="outlined"
+                           type="number"
+                           value={mpg}
+                           onChange={(e) => setMpg(parseInt(e.target.value))}
                 />
             </div>
-            <button onClick={calculateCarbonFootprint}>Calculate</button>
+            <Button variant="contained" onClick={calculateCarbonFootprint}>Calculate</Button>
             <div>
                 <h3>Carbon Footprint: {carbonFootprint} lbs CO2</h3>
             </div>
